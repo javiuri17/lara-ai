@@ -1,0 +1,476 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+*{
+    box-sizing: border-box;
+
+}
+
+
+html, body{
+    width: 100%;
+    min-height: 100%;
+    margin: 0;
+    font-family: "Poppins", sans-serif;
+}
+
+body{
+    background-color: #83dfdc;
+}
+
+#vistaPrincipal{
+    width: 100%;
+    min-height: 100dvh;
+}
+
+.respuestaIA-layout{
+    --bg-main: #83dfdc;
+    --sidebar-bg: #ada3a3;
+    --black: #1d1d1d;
+    --chat-bg: rgba(173, 191, 191, 0.75);
+    --purple: #2b2474;
+    --purple-hover: #1e185d;
+    --sidebar-big: 260px;
+    --sidebar-small: 42px;
+    --sidebar-current: var(--sidebar-big);
+
+    min-height: 100dvh;
+    width: 100%;
+    display: grid;
+    grid-template-columns: var(--sidebar-current) minmax(0, 1fr);
+    background-color: var(--bg-main);
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+
+.respuestaIA-layout.sidebar-open,
+.respuestaIA-layout.sBar-open:not(.sidebar-small){
+    --sidebar-current: var(--sidebar-big);
+}
+
+.respuestaIA-layout.sidebar-small,
+.respuestaIA-layout.sBar-open.sidebar-small{
+    --sidebar-current: var(--sidebar-small);
+}
+
+.barraGrande2,
+.barraPeque2{
+    grid-column: 1;
+    grid-row: 1;
+    width: var(--sidebar-current);
+    min-width: var(--sidebar-current);
+    max-width: var(--sidebar-current);
+    height: 100dvh;
+    min-height: 100dvh;
+    position: sticky;
+    top: 0;
+    align-self: start;
+    background-color: var(--sidebar-bg);
+    border-left: 2px solid rgba(0, 0, 0, 0.75);
+    overflow: hidden;
+    z-index: 20;
+}
+
+.barraGrande2[hidden],
+.barraPeque2[hidden]{
+    display: none !important;
+}
+
+.barraGrande2{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding: 24px 14px 28px;
+}
+
+.barraPeque2{
+    display: block;
+    padding: 54px 0 0;
+}
+
+.barraGrande2 ul,
+.barraPeque2 ul{
+   list-style: none;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+}
+
+.barraGrande2 ul{
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+}
+
+.barraPeque2 ul{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 28px;
+}
+
+.barraGrande2 li,
+.barraPeque2 li{
+    display: flex;
+    align-items: center;
+    margin: 0;
+}
+
+.barraGrande2 li{
+    width: 100%;
+    gap: 18px;
+
+}
+
+.barraGrande2 li:first-child{
+    justify-content: flex-end;
+}
+
+.barraPeque2 li{
+    width: 100%;
+    justify-content: center;
+}
+
+.barraGrande2 button,
+.barraPeque2 button{
+    border: none;
+    background: transparent;
+    display: grid;
+    place-items: center;
+    cursor: pointer;
+    color: var(--black);
+    transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+
+.barraGrande2 button{
+    width: 46px;
+    min-width: 46px;
+    height: 46px;
+    border-radius: 12px;
+}
+
+
+.barraPeque2 button{
+    width: 100%;
+    min-width: 100%;
+    height: 42px;
+    border-radius: 0;
+}
+
+
+.barraGrande2 button:hover,
+.barraPeque2 button:hover{
+    background-color: rgba(0, 0, 0, 0.12);
+    transform: translateY(-1px);
+}
+
+.barraGrande2 svg,
+.barraPeque2 svg{
+    fill: var(--black);
+}
+
+.barraGrande2 svg{
+    width: 30px;
+    height: 30px;
+}
+
+.barraPeque2 svg{
+    width: 28px;
+    height: 28px;
+}
+
+
+.btnToggle {
+    margin-left: auto;
+}
+
+.btn-logout {
+    width: 100%;
+    max-width: 100%;
+    margin-top: 38px;
+    align-self: center;
+    text-align: center;
+    text-decoration: none;
+    background-color: var(--purple);
+    color: white;
+    font-size: 12px;
+    font-weight: 700;
+    padding: 12px 14px;
+    border: 2px solid rgba(0, 0, 0, 0.72);
+    border-radius: 11px;
+    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.18);
+    transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.btn-logout:hover {
+    background-color: var(--purple-hover);
+    transform: translateY(-2px);
+}
+
+.laraChat {
+    grid-column: 2;
+    min-height: 100dvh;
+    min-width: 0;
+    width: 100%;
+    padding: clamp(24px, 4vw, 58px);
+    display: grid;
+    grid-template-rows: auto minmax(0, 1fr) auto;
+    gap: clamp(22px, 3vw, 40px);
+    align-items: stretch;
+}
+
+
+#injectBox{
+    justify-self: end;
+    width: min(440px, 55%);
+    min-height: 76px;
+    padding: 20px 24px;
+    border: 1.8px solid var(--black);
+    border-radius: 18px;
+    background-color: var(--chat-bg);
+    color: #050505;
+    font-size: clamp(12px, 0.8vw, 15px);
+    font-weight: 700;
+    line-height: 1.65;
+    overflow-wrap: break-word;
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.08);
+}
+
+#aiAnswerBox,
+.aiAnswerBox{
+
+    width: min(980px, 82%);
+    min-height: clamp(270px, 42vh, 520px);
+    max-height: 56vh;
+    justify-self: center;
+    padding: clamp(24px, 3vw, 38px);
+    border: 1.8px solid var(--black);
+    border-radius: 18px;
+    background-color: rgba(173, 191, 191, 0.75);
+    color: #050505;
+    font-size: clamp(13px, 0.9vw, 16px);
+    font-weight: 600;
+    line-height: 1.75;
+    overflow-y: auto;
+    overflow-wrap: break-word;
+    scrollbar-width: thin;
+    box-shadow: 0 16px 32px rgba(0, 0, 0, 0.1);
+
+}
+
+.promptBox{
+    width: min(980px, 82%);
+    min-height: 66px;
+    justify-self: center;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 10px 12px 10px 22px;
+    border-radius: 12px;
+    background-color: var(--sidebar-bg);
+    box-shadow: 0 10px 22px rgba(0, 0, 0, 0.12);
+}
+
+.aiInput2{
+    flex: 1;
+    min-width: 0;
+    height: 46px;
+    border: none;
+    outline: none;
+    background: transparent;
+    color: #111;
+    font-family: "Poppins", sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+}
+
+.aiInput2::placeholder{
+    color: rgba(0, 0, 0, 0.55);
+}
+
+.sendPrompt{
+    min-width: 170px;
+    height: 48px;
+    border: none;
+    border-radius: 12px;
+    background-color: #8fdcda;
+    color: #111;
+    font-family: "Poppins", sans-serif;
+    font-size: 15px;
+    font-weight: 800;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 9px;
+    cursor: pointer;
+    transition: transform 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.sendPrompt svg{
+    width: 18px;
+    height: 18px;
+}
+
+.sendPrompt:hover{
+    background-color: #79cecc;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.16);
+}
+
+.sendPrompt:active{
+ transform: translateY(0);
+}
+
+#injectBox:empty::before,
+#aiAnswerBox:empty::before,
+.aiAnswerBox:empty::before{
+    opacity: 0.45;
+}
+
+
+@media(min-width: 1800px){
+
+    .respuestaIA-layout {
+       --sidebar-big: 280px;
+       --sidebar-small: 44px;
+    }
+
+    .laraChat {
+        padding-inline: 7vw;
+    }
+
+    #aiAnswerBox,
+    .aiAnswerBox,
+    .promptBox {
+        width: min(1180px, 72%);
+    }
+
+    #injectBox {
+        width: min(520px, 42%);
+    }
+
+}
+
+@media(max-width: 1400px){
+
+    .respuestaIA-layout {
+        --sidebar-big: 238px;
+        --sidebar-small: 42px;
+    }
+
+    #aiAnswerBox,
+    .aiAnswerBox,
+    .promptBox {
+        width: min(900px, 82%);
+    }
+
+    #injectBox {
+        width: min(390px, 48%);
+    }
+
+}
+
+@media(max-width: 1024px){
+
+    .respuestaIA-layout {
+        --sidebar-big: 210px;
+        --sidebar-small: 42px;
+    }
+
+
+    .laraChat {
+        padding: 28px 24px;
+        gap: 24px;
+    }
+
+    #injectBox {
+        width: min(520px, 86%);
+        justify-self: center;
+    }
+
+    #aiAnswerBox,
+    .aiAnswerBox,
+    .promptBox {
+        width: 94%;
+    }
+
+    #aiAnswerBox,
+    .aiAnswerBox {
+        min-height: 42vh;
+        max-height: 54vh;
+    }
+
+    .promptBox {
+        gap: 10px;
+    }
+
+    .sendPrompt {
+        min-width: 132px;
+        font-size: 14px;
+    }
+
+}
+
+@media(max-width: 760px){
+
+    .respuestaIA-layout {
+        --sidebar-big: 190px;
+        --sidebar-small: 42px;   
+    }
+
+    .barraGrande2{
+        padding: 20px 10px 22px;
+    }
+
+    .barraGrande2 button {
+        height: 42px;
+        width: 42px;
+        min-width: 42px;
+    }
+
+    .barraPeque2{
+        padding-top: 44px;
+    }
+
+    .barraPeque2 ul{
+        gap: 24px;
+    }
+
+
+    .btn-logout {
+        font-size: 11px;
+        padding: 8px 10px;
+    }
+
+    .laraChat {
+        padding: 20px 14px;
+        gap: 18px;
+    }
+
+    #injectBox,
+    #aiAnswerBox,
+    .aiAnswerBox,
+    .promptBox {
+        width: 100%;
+    }
+
+    #aiAnswerBox,
+    .aiAnswerBox {
+        min-height: 40vh;
+    }
+
+    .promptBox {
+        flex-direction: column;
+        align-items: stretch;
+        padding: 14px;
+    }
+
+    .aiInput2 {
+        width: 100%;
+    }
+
+    .sendPrompt {
+        width: 100%;
+    }
+}

@@ -1,0 +1,216 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap');
+
+:root {
+    --bg-page: #83dfdc;
+    --header-cell: #E3C6A9;
+    --body-cell: #F1FFFF;
+    --logout: #30258B;
+    --delete: #F04A1A;
+    --admin: #008B8B;
+    --patient: #FF4B16;
+    --psychologist: #13008B;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+body {
+    background: var(--bg-page);
+    font-family: 'Poppins', Arial, sans-serif;
+    color: #000;
+}
+
+.container-tabla {
+    width: min(980px, 100%);
+    min-height: 540px;
+    margin: 0 auto;
+    padding: 20px 38px 70px;
+    position: relative;
+}
+
+.titulo-tabla {
+    text-align: center;
+    font-size: 34px;
+    line-height: 1.1;
+    font-weight: 800;
+    margin-bottom: 12px;
+}
+
+.btn-logout {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: 30px;
+    padding: 0 12px;
+    margin: 2px 0 60px 2px;
+    border-radius: 12px;
+    border: 3px solid black;
+    background: var(--logout);
+    color: #fff;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.tabla-admin {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 8px 9px;
+    table-layout: fixed;
+}
+
+.tabla-admin th {
+    height: 48px;
+    background: var(--header-cell);
+    text-align: center;
+    vertical-align: middle;
+    font-size: 20px;
+    font-weight: 800;
+    color: #000;
+}
+
+.tabla-admin td {
+    height: 47px;
+    background: var(--body-cell);
+    text-align: center;
+    vertical-align: middle;
+    border: none;
+}
+
+.tabla-admin th:nth-child(1),
+.tabla-admin td:nth-child(1) {
+    width: 180px;
+}
+
+.tabla-admin th:nth-child(2),
+.tabla-admin td:nth-child(2) {
+    width: 145px;
+}
+
+.tabla-admin th:nth-child(3),
+.tabla-admin td:nth-child(3) {
+    width: 145px;
+}
+
+.tabla-admin th:nth-child(4),
+.tabla-admin td:nth-child(4) {
+    width: 110px;
+}
+
+.tabla-admin th:nth-child(5),
+.tabla-admin td:nth-child(5) {
+    width: 220px;
+}
+
+.tabla-admin .header-accion,
+.tabla-admin td:nth-child(6),
+.tabla-admin td:nth-child(7) {
+    width: 50px;
+    background: transparent;
+}
+
+.tabla-admin input:not([type="button"]) {
+    width: 100%;
+    height: 100%;
+    border: none;
+    outline: none;
+    background: transparent;
+    text-align: center;
+    font: inherit;
+    font-size: 14px;
+}
+
+.tabla-admin input:not([type="button"]):focus {
+    background: #fff;
+    box-shadow: inset 0 0 0 2px rgba(48, 37, 139, 0.18);
+}
+
+.btn-actualizar,
+.btn-borrar {
+    width: 45px;
+    height: 34px;
+    border: none;
+    border-radius: 8px;
+    background: var(--body-cell);
+    cursor: pointer;
+    font-size: 0;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 21px;
+}
+
+.btn-actualizar {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' height='24px' viewBox='0 -960 960 960' width='24px' fill='%23000000'%3E%3Cpath d='M200-200h57l391-391-57-57-391 391v57Zm-80 80v-170l528-527q12-11 26.5-17t30.5-6q16 0 31 6t26 18l55 56q12 11 17.5 26t5.5 30q0 16-5.5 30.5T817-647L290-120H120Z'/%3E%3C/svg%3E");
+}
+
+.btn-borrar {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' height='24px' viewBox='0 -960 960 960' width='24px' fill='%23F04A1A'%3E%3Cpath d='M280-120q-33 0-56.5-23.5T200-200v-520h-40v-80h200v-40h240v40h200v80h-40v520q0 33-23.5 56.5T680-120H280Zm80-160h80v-360h-80v360Zm160 0h80v-360h-80v360Z'/%3E%3C/svg%3E");
+}
+
+.btn-actualizar:hover,
+.btn-borrar:hover {
+    transform: scale(1.05);
+}
+
+.filtros-tabla {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+    width: calc(100% - 68px);
+    margin: 2px 0 0 10px;
+}
+
+.filtros-tabla button,
+.filtros-tabla a {
+    height: 36px;
+    border: none;
+    border-radius: 8px;
+    border: 3px solid black;
+    background: var(--header-cell);
+    color: #000;
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 500;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.filtro-tabla .btn-activo :active{
+    font-weight: 800;
+}
+
+.filtros-tabla .btn-filtro filtro-admin {
+    color: var(--admin);
+}
+
+.filtros-tabla .btn-filtro filtro-paciente {
+    color: var(--patient);
+}
+
+.filtros-tabla .btn-filtro filtro-psicologo {
+    color: var(--psychologist);
+}
+
+@media (max-width: 900px){
+    .container-tabla{
+        width: 100%;
+        padding-inline: 18px;
+        overflow-x: auto;
+    }
+
+    .tabla-admin{
+        min-width: 900px;
+    }
+
+    .filtros-tabla{
+        min-width: 820px;
+    }
+}
+

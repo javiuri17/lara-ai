@@ -1,0 +1,414 @@
+#vistaPrincipal{
+    --bg-main: #83dfdc;
+    --sidebar-bg: #b0a6a6;
+    --black: #111111;
+    --soft-black: #242424;
+    --chat-bg: #9fbdbc;
+    --orange: #ff5a1f;
+
+    --sidebar-small-width: 28px;
+    --sidebar-big-width: 167px;
+    --sidebar-current-width: var(--sidebar-big-width);
+
+    --chat-max-width: 772px;
+    --heading-width: 230px;
+    --transition: 0.25s ease;
+
+    width: 100%;
+    min-height: 100dvh;
+    background: var(--bg-main);
+}
+
+/* Main injected view layout.
+   The sidebar and the content now belong to the same grid, so the sidebar no longer covers the chat. */
+#vistaPrincipal .vistaPrincipal-layout {
+    width: 100%;
+    min-height: 100dvh;
+    background: var(--bg-main);
+    position: relative;
+   
+    display: grid;
+    grid-template-columns: var(--sidebar-current-width) minmax(0, 1fr);
+    grid-template-rows: minmax(100dvh, auto);
+
+    overflow: visible;
+}
+
+#vistaPrincipal .vistaPrincipal-layout.sidebar-open {
+    --sidebar-current-width: var(--sidebar-big-width);
+}
+
+#vistaPrincipal .vistaPrincipal-layout.sidebar-small {
+    --sidebar-current-width: var(--sidebar-small-width);
+}
+
+/*-- Base para la sidebar --*/
+#vistaPrincipal .barraLat-chiquita,
+#vistaPrincipal .barraLat-grande {
+    grid-column: 1;
+    grid-row: 1;
+    height: 100dvh;
+    position: sticky;
+    top: 0;
+    align-self: start;
+    background: var(--sidebar-bg);
+    border: 2px solid var(--black);
+    z-index: 100;
+    overflow: hidden;
+}
+
+#vistaPrincipal .barraLat-chiquita {
+    width: var(--sidebar-small-width);
+    min-width: var(--sidebar-small-width);
+    max-width: var(--sidebar-small-width);
+}
+
+
+#vistaPrincipal .barraLat-chiquita ul, 
+#vistaPrincipal .barraLat-grande ul {
+    list-style: none;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+#vistaPrincipal .barraLat-chiquita ul {
+    align-items: center;
+    padding-top: 55px;
+    gap: 23px;
+}
+
+#vistaPrincipal .barraLat-grande ul {
+    padding: 0;
+    gap: 22px;
+}
+
+#vistaPrincipal .barraLat-chiquita li {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#vistaPrincipal .barraLat-chiquita button, 
+#vistaPrincipal .barraLat-grande button {
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    display: grid;
+    place-items: center;
+    color: var(--black);
+    transition: background-color var(--transition), transform var(--transition);
+
+    height: 36px;
+    min-height: 36px;
+}
+
+#vistaPrincipal .barraLat-chiquita button:hover, 
+#vistaPrincipal .barraLat-grande button:hover {
+    background: rgba(0, 0, 0, 0.08);
+    transform: scale(1.05);
+}
+
+#vistaPrincipal .barraLat-chiquita button {
+    width: 100%;
+    height: 36px;
+    min-height: 36px;
+}
+
+#vistaPrincipal .barraLat-grande button {
+    width: 36px;
+    min-width: 36px;
+    height: 36px;
+    min-height: 36px;
+    flex-shrink: 0;
+}
+
+#vistaPrincipal .barraLat-chiquita svg {
+    width: 24px;
+    height: 24px;
+}
+
+#vistaPrincipal .barraLat-grande svg {
+    width: 24px;
+    height: 24px;
+}
+
+#vistaPrincipal .barraLat-chiquita svg, 
+#vistaPrincipal .barraLat-grande svg{
+    fill: var(--black);
+}
+
+#vistaPrincipal .barraLat-grande .etiqueta {
+    min-width: 0;
+    max-width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-size: 10px;
+    font-weight: 800;
+    color: var(--black);
+}
+
+
+/*-- Sidebar chiquita --*/
+.barraLat-chiquita li {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/*-- Sidebar grande --*/
+#vistaPrincipal .barraLat-grande  {
+    width: var(--sidebar-big-width);
+    min-width: var(--sidebar-big-width);
+    max-width: var(--sidebar-big-width);
+    padding: 22px 18px;
+    box-sizing: border-box;
+
+    display: flex;
+    flex-direction: column;
+}
+
+#vistaPrincipal .barraLat-grande ul{
+    list-style: none;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+}
+
+#vistaPrincipal .barraLat-grande > ul:first-of-type{
+    flex: 0 0 auto;
+}
+
+#vistaPrincipal .barraLat-grande > ul:last-of-type{
+    margin-top: auto;
+    flex: 0 0 auto;
+    gap: 0;
+}
+
+#vistaPrincipal .barraLat-grande li {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 12px;
+    margin-bottom: 8px;
+}
+
+#vistaPrincipal .barraLat-grande li:first-child {
+    justify-content: flex-end;
+}
+
+.barraLat-grande .etiqueta {
+    font-size: 12px;
+    font-weight: 800;
+    color: var(--black);
+    white-space: nowrap;
+}
+
+#vistaPrincipal .barraLat-grande .btn-toggle{
+    margin-left: auto;
+    margin-right: 0;
+}
+
+.barraLat-chiquita[hidden],
+.barraLat-grande[hidden] {
+    display: none !important;
+}
+
+/*-- Wrapper principal del chat --*/
+#vistaPrincipal .laraWrapper {
+    grid-column: 2;
+    min-height: 100dvh;
+    width: 100%;
+    min-width: 0;
+    padding: 0 clamp(16px, 4vw, 48px);
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    transform: translateX(-84px);
+}
+
+/*-- Encabezado  --*/
+.heading-principal,
+.ai-container {
+    width: 100%;
+    max-width: var(--chat-max-width);
+}
+
+.heading-principal {
+    margin-bottom: 22px;
+    font-size: 19px;
+    line-height: 1.1;
+    font-weight: 800;
+    letter-spacing: 1px;
+    color: var(--black);
+}
+
+#vistaPrincipal .heading-principal {
+    text-align: center;
+}
+
+
+/*-- Botón logout --*/
+#vistaPrincipal .barraLat-grande > ul:last-of-type li{
+    margin: 0;
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+#vistaPrincipal .btn-logout {
+
+    position: static;
+    box-sizing: border-box;
+
+    width: 100%;
+    min-height: 38px;
+
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+
+    text-decoration: none;
+    text-align: center;
+    color: #ffffff;
+    background: #2f2a86;
+    font-size: 11px;
+    font-weight: 800;
+    line-height: 1;
+
+    border: 1.5px solid var(--black);
+    border-radius: 12px;
+    padding: 8px 10px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.22);
+    transition: background-color var(--transition), transform var(--transition), box-shadow var(--transition);
+}
+
+#vistaPrincipal .btn-logout:hover {
+    background: #272174;
+    transform: translateY(-1px);
+    box-shadow: 0 5px 14px rgba(0, 0, 0, 0.25);
+}
+
+
+/*-- Caja del chat  --*/
+.ai-container {
+    min-height: 86px;
+    background: var(--chat-bg);
+    border: 1.5px solid var(--soft-black);
+    border-radius: 10px;
+    box-shadow: 0 3px 0 rgba(0, 0, 0, 0.22);
+    padding: 15px 17px 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.ai-input {
+    width: 100%;
+    min-height: 42px;
+    border: none;
+    outline: none;
+    background: transparent;
+    font-family: inherit;
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--black);
+}
+
+.ai-input::placeholder {
+    color: #626262;
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 0.5px;
+}
+
+/*-- Botones dentro del chat  --*/
+.button-group {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.ai-button {
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;   
+    font-family: inherit;
+    font-size: 11px;
+    font-weight: 800;
+    color: var(--black);
+    transition: opacity var(--transition), transform var(--transition);
+}
+
+.ai-button:hover {
+    opacity: 0.75;
+    transform: scale(1.03);
+}
+
+.ai-button svg {
+    width: 18px;
+    height: 18px;
+}
+
+
+/*-- Parte responsive del chat  --*/
+@media (max-width: 760px) {
+    #vistaPrincipal {
+        --sidebar-big-width: 150px;
+        --sidebar-small-width: 42px;
+        --chat-max-width: 360px;
+    }
+
+    #vistaPrincipal .heading-principal {
+        font-size: 17px;
+    }
+
+    #vistaPrincipal .barraLat-grande .etiqueta{
+        font-size: 11px;
+    }
+
+    #vistaPrincipal .btn-logout {
+        min-height: 32px;
+        font-size: 8px;
+        border-radius: 7px;
+        padding: 6px 6px;
+    }
+}
+
+@media (max-width: 560px) {
+    #vistaPrincipal {
+        --sidebar-big-width: 130px;
+        --sidebar-small-width: 42px;
+        --chat-max-width: 100%;
+    }
+
+    #vistaPrincipal .laraWrapper {
+        padding: 0 12px;
+    }
+
+    #vistaPrincipal .heading-principal{
+        font-size: 16px;
+    }
+
+    #vistaPrincipal  .ai-container {
+        min-height: 78px;
+    }
+}
