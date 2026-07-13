@@ -74,3 +74,5 @@ Que va a contener una tabla para usuarios y chats
 Donde la vayas a alojar
 
 ##### 8. Abre la aplicación con un servidor APACHE
+
+Como el servidor HTTP de APACHE
