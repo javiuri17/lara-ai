@@ -1,0 +1,33 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+:root{
+    --bg: #bdf3f2;
+    --text: #111111;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body{
+    width: 100%;
+    min-height: 100%;
+}
+
+body {
+    min-height: 100vh;
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Poppins', sans-serif;
+    overflow-x: auto;
+    overflow-y: auto;
+}
+
+#vistaPrincipal{
+    width: 100%;
+    min-height: 100dvh;
+    background: var(--bg);
+    isolation: isolate;
+}
